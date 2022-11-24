@@ -9,7 +9,7 @@ class CompletionContributor : CompletionContributor() {
     init {
         extend(
             CompletionType.BASIC,
-            PlatformPatterns.psiElement(DejavuTypes.SLOT_CONTENT),
+            PlatformPatterns.psiElement(DejavuTypes.TEXT),
             TextCompletionProvider()
         )
     }

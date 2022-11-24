@@ -1,4 +1,4 @@
-package djv.intellij.ide.annotator
+package dejavu.intellij.ide.annotator
 
 import com.intellij.ide.plugins.PluginManagerCore
 import com.intellij.lang.annotation.AnnotationHolder

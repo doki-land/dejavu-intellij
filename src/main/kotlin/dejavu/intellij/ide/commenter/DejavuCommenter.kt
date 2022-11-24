@@ -1,4 +1,4 @@
-package djv.intellij.ide
+package dejavu.intellij.ide.commenter
 
 import com.intellij.lang.Commenter
 

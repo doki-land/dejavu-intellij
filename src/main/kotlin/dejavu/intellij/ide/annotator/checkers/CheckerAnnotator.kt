@@ -1,14 +1,14 @@
-package djv.intellij.ide.annotator.checkers
+package dejavu.intellij.ide.annotator.checkers
 
 
 import com.intellij.lang.annotation.AnnotationHolder
+import com.intellij.lang.annotation.Annotator
 import com.intellij.lang.annotation.HighlightSeverity
 import com.intellij.psi.PsiElement
-import djv.intellij.ide.annotator.AnnotatorBase
 
-abstract class CheckerAnnotator : AnnotatorBase() {
+abstract class CheckerAnnotator : Annotator {
     protected abstract fun check(element: PsiElement, holder: AnnotationHolder): CheckerAnnotatorResult
-    override fun annotateInternal(element: PsiElement, holder: AnnotationHolder) {
+    protected fun annotateInternal(element: PsiElement, holder: AnnotationHolder) {
         when (val result = check(element, holder)) {
             CheckerAnnotatorResult.Ok -> {}
             is CheckerAnnotatorResult.Error -> {
@@ -19,5 +19,9 @@ abstract class CheckerAnnotator : AnnotatorBase() {
                     .create()
             }
         }
+    }
+
+    override fun annotate(element: PsiElement, holder: AnnotationHolder) {
+        annotateInternal(element, holder)
     }
 }

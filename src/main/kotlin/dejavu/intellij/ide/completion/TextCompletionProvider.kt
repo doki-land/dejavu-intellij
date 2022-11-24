@@ -72,6 +72,18 @@ class TextCompletionProvider : CompletionProvider<CompletionParameters>() {
             <%  %>
             """
         )
+        
+        resultSet.addElement(
+            "super", "super", """
+            <% super %>
+            """
+        )
+        
+        resultSet.addElement(
+            "looper", "looper", """
+            <% looper %>
+            """
+        )
     }
 
     private fun CompletionResultSet.addSlot(

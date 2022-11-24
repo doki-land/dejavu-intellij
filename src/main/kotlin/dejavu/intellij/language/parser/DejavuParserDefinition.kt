@@ -19,12 +19,12 @@ import dejavu.intellij.language.psi.DejavuTypes
 class DejavuParserDefinition : ParserDefinition {
     override fun createLexer(project: Project): Lexer = DejavuLexer(DejavuLanguage.LanguageConfig)
 
-    override fun createParser(project: Project): PsiParser = DejavuParser(DejavuLanguage.LanguageConfig)
+    override fun createParser(project: Project): PsiParser = DejavuParser()
 
     override fun getFileNodeType(): IFileElementType = DejavuTypes.FILE
 
     override fun getCommentTokens(): TokenSet =
-        TokenSet.create(DejavuTypes.COMMENT_START, DejavuTypes.COMMENT_CONTENT, DejavuTypes.COMMENT_END)
+        TokenSet.create(DejavuTypes.COMMENT_L, DejavuTypes.COMMENT_CONTENT, DejavuTypes.COMMENT_R)
 
     override fun getStringLiteralElements(): TokenSet = TokenSet.create()
 

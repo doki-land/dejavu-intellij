@@ -1,4 +1,4 @@
-package djv.intellij.ide.annotator.checkers
+package dejavu.intellij.ide.annotator.checkers
 
 import com.intellij.openapi.util.TextRange
 
