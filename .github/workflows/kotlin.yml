@@ -1,0 +1,48 @@
+# GitHub Actions Workflow created for testing and preparing the plugin release
+# - validate Gradle Wrapper
+# - run tests
+# - run Qodana inspections
+# - build plugin
+#
+# Workflow is triggered on push and pull_request events.
+#
+# GitHub Actions reference: https://help.github.com/en/actions
+
+name: Build
+on:
+  push:
+    branches: [master, dev]
+  pull_request:
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      # Check out current repository
+      - name: Fetch Sources
+        uses: actions/checkout@v2.4.0
+
+      # Validate wrapper
+      - name: Gradle Wrapper Validation
+        uses: gradle/wrapper-validation-action@v1.0.4
+
+      # Setup Java 11 environment for the next steps
+      - name: Setup Java
+        uses: actions/setup-java@v2
+        with:
+          distribution: zulu
+          java-version: 11
+          cache: gradle
+
+      # Run tests
+      - name: Run Tests
+        run: ./gradlew test
+
+      # Run Qodana inspections
+      - name: Qodana - Code Inspection
+        uses: JetBrains/qodana-action@v4.1.0
+
+      # Build plugin
+      - name: Build Plugin
+        run: ./gradlew buildPlugin
