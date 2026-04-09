@@ -6,7 +6,7 @@
 <% end block %>
 
 <% block content %>
-    <% loop items as item %>
+    <% loop items in item %>
         - <% item.name %>: <% item.value %>
     <% end loop %>
 <% end block %>

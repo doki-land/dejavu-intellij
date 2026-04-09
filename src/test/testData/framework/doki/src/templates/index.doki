@@ -4,7 +4,7 @@
     <main>
         <h2>Recent Posts</h2>
         <ul class="post-list">
-            {% loop posts as post %}
+            {% loop posts in post %}
             <li>
                 <a href="/posts/{% post.slug %}">
                     <h3>{% post.title %}</h3>
